@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jack Podsiad Portfolio</title>
+
+    <script src="three.r134.min.js"></script>
+    <script src="vanta.net.min.js"></script>
+
+    <style>
+        /* List of things to add:
+            - Buttons scroll to destination
+            - Infoboxes glide into frame
+            - Photos
+            -  */
+        html {
+             background-color: #100022; 
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        /* Background */
+        #vanta_bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            min-width: 100vw;
+            min-height: 100vh;
+            z-index: -1;
+        }
+
+        /* Title/Name */
+        #name {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height:55vw;
+            
+
+        }
+
+        #name h1 {
+            text-align: center;
+            
+            color: transparent;
+            background-image: linear-gradient(to right, #9596fd, #efafff);
+            background-clip: text;
+
+            /* color: rgb(240, 217, 234); */
+
+            font-size: 100px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        #name h2 {
+            text-align: center;
+            color: rgb(240, 217, 234);
+            font-size: 25px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            
+        }
+
+        /* Header */
+        header {
+            margin: 30px;
+            position: fixed;
+            top: 30px;
+            z-index: 100;
+            justify-self: center;
+        }
+
+        header div {
+            display: flex;
+            justify-content: center;
+            
+            
+        }
+
+        header div nav {
+            background: rgba(0, 0, 0, .1);
+            backdrop-filter: blur(5px);
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding-inline-start: 3rem;
+            padding-inline-end: 3rem;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+
+            font-size: large;
+            
+    
+        } 
+
+        header div nav div {
+            display: flex;
+            gap: 4rem;
+        }
+
+        header div nav div a {
+            color: whitesmoke;
+            font-family: monospace;
+            text-decoration: none;
+
+        }
+
+        /* Infoboxes */
+        #infoBox {
+            background: rgba(0, 0, 0, .1);
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding-inline-start: 3rem;
+            padding-inline-end: 3rem;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+
+            color: whitesmoke;
+            margin: 5rem;
+            margin-left: 10rem;
+            margin-right: 10rem;
+            font-family: monospace;
+            font-size: x-large;
+        }
+
+        #infoBox h2 {
+            width: max-content;
+            color: transparent;
+            background-image: linear-gradient(to right, #9596fd, #efafff);
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: whitesmoke;
+        }
+
+        #infoBox hr {
+            border: none;
+            height: 2px;
+            background-image: linear-gradient(to right, #9596fd, #efafff);
+
+        }
+
+        #infoBox ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        
+
+        /* Link Colors */
+        #infoList li a:link{color: #9596fd;}
+        #infoList li a:visited{color: purple;}
+        #infoList li a:hover{color: #efafff;}
+        #infoList li a:active{color: magenta;}
+
+        #skillsLists {
+            justify-content: center;
+            display: flex;
+            flex-direction: row;
+            gap: 12rem;
+        }
+        
+        /* Button Stuff */
+        button {
+            background: rgba(0, 0, 0, .1);
+            backdrop-filter: blur(5px);
+            background-image: linear-gradient(to right, rgba(149, 150, 253, 0.2), rgba(239, 175, 255,0.2));
+            
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding-inline-start: 3rem;
+            padding-inline-end: 3rem;
+
+            color: whitesmoke;
+            font-family: monospace;
+            font-size: x-large;
+        }
+
+        button:hover { background-image: linear-gradient(to right, rgba(149, 150, 253, 0.4), rgba(239, 175, 255,0.4)); }
+        button:active { background-image: linear-gradient(to right, rgba(149, 150, 253, 0.6), rgba(239, 175, 255, 0.6)); }
+
+        #SETPhotos {
+            display: flex;
+            position: fixed;
+            z-index: 101;
+            height: 100vw;
+            width: 100vw;
+            top: 0;
+            left: 0;
+
+            background: rgba(0, 0, 0, .1);
+            backdrop-filter: blur(5px);
+            color: whitesmoke;
+
+            justify-content: center;
+        }
+
+        #SETPhotosContainer {
+            background: rgba(0, 0, 0, .1);
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding-inline-start: 3rem;
+            padding-inline-end: 3rem;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            height: 40vw;
+
+            color: whitesmoke;
+            margin: 5rem;
+           
+            font-family: monospace;
+            font-size: x-large;
+
+            color:whitesmoke;
+            justify-content: center;
+        }
+
+        #SETPhotos #SETPhotosContainer #header {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .SETImage {
+            max-height: 17vw;
+        }
+
+        #closePhotos {
+            align-self: right;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+
+
+    <script>
+        let showSET = () => {
+            document.getElementById("SETPhotos").classList.remove("hidden");
+        }
+
+        let hideSET = () => {
+            document.getElementById("SETPhotos").classList.add("hidden");
+        }
+    </script>
+</head>
+
+<body id="body">
+    <div id="vanta_bg"></div>
+
+    <header>
+        <div>
+            <nav>
+                <div>
+                    <!-- Add a scroll feature whenever buttons are pressed -->
+                    <!-- Have it scroll to the destination instead of teleporting -->
+                    <a href="#name">Home</a>
+                    <a href="#aboutMeIndex">About</a>
+                    <a href="#skillsIndex">Skills</a>
+                    <a href="#achievementsIndex">Achievements</a>
+                    <a href="#contactIndex">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="name">
+            <h1>Jack Podsiad</h1>
+            <h2>Future Software Engineer</h2>
+        </div>
+
+        <br id="aboutMeIndex">
+
+        <div id="infoBox">
+            <h2>About Me</h2>
+
+            <hr></hr>
+
+            <p>
+                I'm a high school student with a passion for coding and a drive to get better.
+            </p>
+
+            <ul id="infoList">
+                <li>Currently a student at Western High School </li>
+                <li>Currently enrolled at the Bay Arenac ISD Career Center</li>
+                <li>Currently enrolled in Delta</li>
+                <li>Planning to transfer to SVSU</li>
+                <li>Aiming to get a Bachelor's Degree in Software Engineering</li>                
+            
+            </ul>
+        </div>
+
+        <br id="skillsIndex">
+
+        <div id="infoBox"> 
+            <h2>Skills</h2>
+
+            <hr></hr>
+
+            <p>
+                Here are some of my strongest skills:
+            </p>
+
+
+            <div id="skillsLists">
+                <ul id="infoList">
+                    <h3>Hard Skills</h3>
+                    <li>GDScript Proficient</li>
+                    <li>HTML/CSS Certified</li>
+                    <li>JavaScript Certified</li>
+                    <li>Java Certified</li>
+                    <li>Google/Microsoft Suite</li>
+                </ul>
+                
+                <ul id="infoList">
+                    <h3>Soft Skills</h3>
+                    <li>Teamwork</li>
+                    <li>Communication</li>
+                    <li>Problem Solving</li>
+                    <li>Love for Learning</li>
+                    <li>Versitile</li>
+                </ul>
+            </div>
+            
+        </div>
+
+        <br id="achievementsIndex">
+
+        <div id="infoBox"> 
+            <h2>Achievements</h2>
+
+            <hr></hr>
+
+            <p>
+                Here are some of my most notable achievements
+            </p>
+
+            <ul id="infoList">
+                <li>Business Professionals of America competitor</li>
+                <li>Nationals finalist for Software Engineering Team (BPA)</li>
+                <button id="setPhotosButton" onclick="showSET()">SET Photos</button>
+                <li>State Qualifier for Technology Information Concepts (BPA)</li>
+                <li>State Qualifier for Java Programming (BPA)</li>
+                <li>Student Success Award at the Career Center</li>
+                <li>4.17 GPA</li>
+                
+        </div>
+        
+        <section id="SETPhotos" class="hidden">
+            
+            <div id="SETPhotosContainer">
+                <div id="header">
+                    <h2>Photos From Software Engineering Team:</h2>
+                    <button id="closePhotos" onclick="hideSET()">X</button>
+                </div>
+                <div id="body">
+                    <div>
+                        <img class="SETImage" src="Screenshot 2026-02-20 090749.png" alt="SET Image">
+                        <img class="SETImage" src="Screenshot 2026-02-20 090938.png" alt="SET Image">
+                    </div>
+                    
+                    <div>
+                        <img class="SETImage" src="Screenshot 2026-02-20 091012.png" alt="SET Image">
+                        <img class="SETImage" src="Screenshot 2026-02-20 091039.png" alt="SET Image">
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <br id="contactIndex">
+
+        <div id="infoBox"> 
+            <h2>Contact Info</h2>
+
+            <hr></hr>
+
+            <p>
+                Here's some links for extra info, as well as ways to contact me.
+            </p>
+
+            <ul id="infoList">
+                <li>Email: jackpodsiad@gmail.com</li>
+                <li>Phone: 989-572-3295</li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/jack-podsiad-58569b38a" target="_blank">View Profile</a></li>
+                <li>GitHub: <a href="https://github.com/Jack-Of-Spades-14" target="_blank">View Profile</a></li>
+        </div>
+
+        <br>
+    
+    </main>
+
+    <script>
+        VANTA.NET({
+        el: "#vanta_bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0xcc30fc,
+        backgroundColor: 0x100022,
+        points: 13.00,
+        maxDistance: 18.00,
+        spacing: 19.00,
+        })
+    </script>
+</body>
+    
+</html>
+
