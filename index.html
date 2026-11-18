@@ -238,6 +238,23 @@
         .hidden {
             display: none !important;
         }
+
+        .bpaPhotos {
+            max-height: 30vw;
+            object-fit: contain; 
+        }
+
+        #basicsBox {
+             justify-content: center;
+            display: flex;
+            flex-direction: row;
+            gap: 4rem;
+        }
+
+        .hockeyPhoto {
+            max-height: 20vw;
+            object-fit: contain; 
+        }
     </style>
 
 
@@ -285,25 +302,35 @@
         <br>
 
         <div id="infoBox">
-            <h2>Basics</h2>
+            <div id="basicsBox">
+                <div>
+                    <h2>Basics</h2>
 
-            <hr></hr>
+                    <hr></hr>
 
-            <!-- <p>
-                I'm a high school student with a passion for coding and a drive to get better.
-            </p> -->
+                    <ul id="infoList">
+                        <li>Family of five - Middle child</li>
+                        <!-- Family is a very important part of my life, they've supported me all the way-->
+                        <li>Bay City Western Highschool - Senior, 4.17 GPA</li>
+                        <!-- Enjoy my time here -->
+                        <li>Bay Arenac ISD Career Center - 2nd year</li>
+                        <!-- I'll get into this a bit later -->
+                        <li>Hockey - Bay City Wolves</li>          
+                        <!-- Played pretty much my whole life (started at 6 years old) -->
+                        <!-- Taught me a lot about life, played an important role in shaping who I am -->
+                    </ul>
+                </div>
+                
+                <br></br>
 
-            <ul id="infoList">
-                <li>Family of five - Middle child</li>
-                <!-- Family is a very important part of my life, they've supported me all the way-->
-                <li>Bay City Western Highschool - Senior, 4.17 GPA</li>
-                <!-- Enjoy my time here -->
-                <li>Bay Arenac ISD Career Center - 2nd year</li>
-                <!-- I'll get into this a bit later -->
-                <li>Hockey - Bay City Wolves</li>          
-                <!-- Played pretty much my whole life (started at 6 years old) -->
-                <!-- Taught me a lot about life, played an important role in shaping who I am -->
-            </ul>
+                <!-- <div>
+                    <img class="bpaPhotos" src="IMG_20260506_220604356_HDR.jpg" alt="SET Image"> 
+                </div> -->
+                <img class="hockeyPhoto" src="Snapchat-1599230302.jpg" alt="SET Image"> 
+                
+
+            </div>
+            
         </div>
 
         <br>
@@ -350,6 +377,9 @@
                     <li>Love going everyday</li>
                     <li>Found my passion for programming</li>
                     <li>Ties into where I'm going</li>
+                    <hr></hr>
+                    <img class="bpaPhotos" src="IMG_20260506_220604356_HDR.jpg" alt="SET Image">
+
 
                     <!-- <li>HTML/CSS Certified</li>
                     <li>JavaScript Certified</li>
@@ -363,7 +393,11 @@
                     <li>1st in state, top ten at nationals</li>
                     <!-- BPA showed me what I'm capable of -->
                     <li>President of our chapter</li>
+                    <hr></hr>
+                    <img class="bpaPhotos" src="IMG_20260507_153803271_HDR.jpg" alt="SET Image">
+
                 </ul>
+
             </div>
             
         </div>
